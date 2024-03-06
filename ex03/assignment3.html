@@ -1,0 +1,50 @@
+<!-- Custom trim()Implementation
+
+Objective: 
+Remove whitespace from both ends of the string " Hello World ".
+
+Task: 
+Manually trim the string " Hello World " without using the trim()method.
+
+Conditions: 
+Use a loop to identify the first and last non-whitespace characters.
+
+Instructions:
+o Identify the first non-whitespace character from the beginning.
+o Identify the first non-whitespace character from the end.
+o Use substring()to extract the trimmed string.
+o Display the trimmed string. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><Exercises-3></Exercises-3></title>
+</head>
+<body>
+    <h1>Javascript Exercises-3</h1>
+    <p>Iurii Rychkov</p>
+    
+    <script>
+        var text = " \n\tHello World \t";
+        console.log(text);
+        let i = 0;
+        while (text.charCodeAt(i) <= 32 || text.charCodeAt(i) == 127){
+            i += 1;
+        }
+        const beginning = i;
+        console.log("Index of beginning: " + beginning);            // output: Index of beginning: 2
+        i = text.length - 1;
+        while (text.charCodeAt(i) <= 32 || text.charCodeAt(i) == 127){
+            i -= 1;
+        }
+        const end = i + 1;
+        console.log("Index of end: " + end);                        // output: Index of end: 13
+        let newString = text.substring(beginning, end);
+        console.log(newString);                                     // output: Hello World
+        console.log("Lenght of new string: " + newString.length)  // output: Lenght of new string: 11
+        
+    </script>
+</body>
+</html>
