@@ -1,0 +1,61 @@
+<!-- JavaScript Exercises-4 Array
+Harjoitus 1: Taulukon manipulointi ja kysely
+Tavoite: Käytä sarjaa taulukon metodeja taulukon datan manipulointiin ja kyselyyn. Ohjeet:
+Odotettu tulos:
+Harjoitus 2: Taulukon luominen ja suodattaminen
+Tavoite: Yhdistä taulukot ja suodata tietyt elementit pois. Ohjeet:
+• Aloita taulukolla: [3, 7, 9, 2, 5].
+• Käytä sort()-metodia taulukon järjestämiseen nousevaan järjestykseen.
+• Käytä reverse()-metodia taulukon järjestyksen kääntämiseen.
+• Käytä indexOf()-metodia löytääksesi luvun 9 sijainnin.
+• Tulosta järjestetty, käännetty taulukko ja luvun 9 indeksi.
+• Järjestetty ja käännetty taulukko: [9, 7, 5, 3, 2]
+• 9:n indeksi: 0
+ 
+• Luo kaksi taulukkoa: array1 = [1, 2, 3] ja array2 = [3, 4, 5].
+• Käytä concat()-metodia yhdistääksesi array1 ja array2.
+• Käytä filter()-metodia luodaksesi uuden taulukon, jossa on vain lukuja suurempia
+kuin 3.
+• Tulosta yhdistetty taulukko ja suodatettu taulukko. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><Exercises-4></Exercises-4></title>
+</head>
+<body>
+    <h1>Javascript Exercises-4</h1>
+    <p>Iurii Rychkov</p>
+    
+    <script>
+
+        // Aloita taulukolla: [3, 7, 9, 2, 5]
+        const array = [3, 7, 9, 2, 5];
+
+        // Käytä sort()-metodia taulukon järjestämiseen nousevaan järjestykseen.
+        console.log(array.sort());                                                  //output: [2, 3, 5, 7, 9]
+
+        // Käytä reverse()-metodia taulukon järjestyksen kääntämiseen.
+        console.log(array.reverse());                                               //output: [9, 7, 5, 3, 2]
+
+        // Käytä indexOf()-metodia löytääksesi luvun 9 sijainnin.
+        console.log(array.indexOf(9));                                              //output: 0
+
+
+        // Luo kaksi taulukkoa: array1 = [1, 2, 3] ja array2 = [3, 4, 5].
+        const array1 = [1, 2, 3];
+        const array2 = [3, 4, 5];
+        // Käytä concat()-metodia yhdistääksesi array1 ja array2.
+        const newArray = array1.concat(array2);
+        console.log(newArray);                                                      //output: [1, 2, 3, 3, 4, 5]
+        // Käytä filter()-metodia luodaksesi uuden taulukon, jossa on vain lukuja suurempia kuin 3.
+        function checkNumber(number) {
+            return number > 3;
+        }
+        console.log(newArray.filter(checkNumber));                                  //output: [4, 5]
+
+    </script>
+</body>
+</html>
