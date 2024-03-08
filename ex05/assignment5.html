@@ -1,0 +1,112 @@
+<!-- JavaScript Exercises-5 Array
+JavaScript Exercise: Enhancing a Name List Application Using Console
+Objective: Improve and expand the given JavaScript code to practice working with arrays, loops, and basic input/output operations in JavaScript.
+let names = ["Juri", "Aws"];
+names.forEach(name => console.log(name));
+while(true) {
+let newName = prompt("Enter a name, or cancel to stop:");
+if(newName) {
+names.push(newName);
+console.log(newName); } else {
+break; }
+}
+• Duplicate Name Check: Modify the code so that it checks if the entered name already exists in the names array. If it does, display a message in the console saying "Name already exists!" and do not add it to the array.
+• Sorting Names: After each new name is added, sort the names array alphabetically and display the entire list again in the console.
+• Limit Name Entries: Modify the code to allow only a maximum of 10 names in the names array. If the limit is reached, display a message in the console saying "Name limit reached" and stop asking for new names.
+• Case Insensitivity: Ensure that the duplicate name check is case insensitive (e.g., "ALI" and "ali" should be considered the same).
+• Exit Option in Prompt: Instead of using the cancel button to stop entering names, modify the prompt to say "Enter a name, or type 'exit' to stop:". The loop should terminate when the user types 'exit'.
+Hints:
+• Use Array.includes() for the duplicate check, remembering to adjust for case sensitivity.
+• Use Array.sort() to sort the names alphabetically.
+• Use console.log() to display messages and the list of names.
+• Initial names "Juri" and "Aws" are displayed.
+• User enters "Sara" - it's added and the list is displayed: Juri, Aws, Sara.
+• User enters "ali" - console displays "Name already exists!".
+• User enters "Bob" - it's added and the list is displayed: Aws, Bob, Juri, Sara.
+• User continues until the list has 10 names or types 'exit' to stop early.
+• If the limit of 10 names is reached, the console displays "Name limit reached".
+• If 'exit' is entered, the console displays "Exiting..." and the loop stops.
+Remember, this is a simulated output. The actual behavior will depend on the user's input during each prompt. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><Exercises-5></Exercises-5></title>
+</head>
+<body>
+    <h1>Javascript Exercises-5</h1>
+    <p>Iurii Rychkov</p>
+    
+    <script>
+        // version_1 with a helper_function for validation value in orig array by using toLowerCase
+        //
+        // let names = ["Juri", "Aws"];
+        // names.forEach(name => console.log(name));
+        // while(true) {
+        //     let newName = prompt("Enter a name, or type 'exit' to stop:");
+        //     if (newName){
+        //         let lowerCaseNewName = newName.toLowerCase();
+        //         if(lowerCaseNewName == "exit") {
+        //             console.log("Exiting...");
+        //             break;
+        //             }
+        //         else if (names.some(function(name) {
+        //             return name.toLowerCase() === lowerCaseNewName;
+        //         })) {
+        //             console.log("Name already exists!");
+        //         }
+        //         else {
+        //             if (names.length < 10){
+        //                 names.push(newName);
+        //                 console.log("New name added: " + newName);
+        //                 console.log(names.sort());
+        //             }
+        //             else{
+        //                 console.log("Name limit reached");
+        //                 break;
+        //             }
+        //         }
+        //     }
+        //     else {
+        //         break;
+        //     }
+        // }
+
+        // version_2 with helper_array for validation value in orig array by using toLowerCase
+
+        let names = ["Juri", "Aws"];
+        names.forEach(name => console.log(name));
+        while(true) {
+            let newName = prompt("Enter a name, or type 'exit' to stop:");
+            if (newName) {
+                if(newName.toLowerCase() === 'exit') {
+                    console.log("Exiting...");
+                    break;
+                }
+                let lowerCaseNewName = newName.toLowerCase();
+                let lowerCaseNames = names.map(name => name.toLowerCase());
+                if(lowerCaseNames.includes(lowerCaseNewName)) {
+                    console.log("Name already exists!");
+                }
+                else if (names.length < 10) {
+                    names.push(newName);
+                    console.log("New name added: " + newName);
+                    console.log(names.sort());
+                } else {
+                    console.log("Name limit reached");
+                    break;
+                }
+            }
+            else {
+                break;
+            }
+        }
+
+        // version1 and version2 have been tested. Both work good. 
+
+
+    </script>
+</body>
+</html>
