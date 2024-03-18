@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 7</title>
+</head>
+<body>
+    <h1>Assignment 7</h1>
+    <p>Iurii Rychkov</p>
+    <p id="changeMe">Original Text</p>
+    <div id="styleMe">Style this div</div>
+
+
+    <script>
+        document.getElementById("changeMe").innerHTML = "Text has been changed!";
+
+        const styleMe = document.getElementById("styleMe");
+        styleMe.style.color = "red";
+        styleMe.style.border = "1px solid #ccc";    
+
+    </script>
+    
+</body>
+</html>

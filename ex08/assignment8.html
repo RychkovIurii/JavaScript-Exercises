@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 8</title>
+</head>
+<body>
+    <h1>Assignment 8</h1>
+    <h4>Iurii Rychkov</h4>
+
+    <p>text1</p>
+    <p>text2</p>
+    <p>text3</p>
+    <p>text4</p>
+
+
+    <script>
+        const qselectAll = document.querySelectorAll("p");
+        // for (i=0; i<qselectAll.length; i++){
+        //     qselectAll[i].innerHTML = "23 Mak";
+        
+        let i = 0;
+        while (i < qselectAll.length){
+            qselectAll[i].innerHTML = "23 Mak";
+            if (i == 1){
+                qselectAll[i].style.backgroundColor = "yellow";
+            }
+            i++;
+        }  
+
+    </script>
+    
+</body>
+</html>
