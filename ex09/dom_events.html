@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Events and EventListener JS</title>
+</head>
+<body>
+    <h1>DOM Events and EventListener Exercises</h1>
+    <button onclick="pow2(2)">Click here and we run pow2 fuction, result in console.</button><br>
+    <button onclick="sayHello()">Click here and we run sayHello fuction</button>
+    <div id="info"> Here I'll print my result from sayHello</div>
+    <h2 onclick="this.innerHTML='Ooops!'">Click on this text!</h2>
+    <h3 onclick="changeText(this)">Click here!</h3>
+    <button onmouseover="sayHello()">Call the funct without a click</button>
+
+    <h5>EventListeners methods</h5>
+    <input type="text" id="inputID" />
+    <div id="divID">We want to print output here</div>
+    <button onclick="printInput()">Print Input</button>
+
+    <p>This example uses the addEventListener() method to attach a click event to a button.</p>
+    <button id="myBtn">Try it</button><br>
+    <button id="myBtn2">Try second</button>
+    <div id="secondBtnDiv">Wait...</div>
+
+
+    <script src="dom_events.js"></script>
+</body>
+</html>
