@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>The form has been submitted</h2>
+    <div id="info">
+
+    </div>
+
+    <script>
+        const info = document.getElementById("info");
+        var pars = new URLSearchParams(window.location.search);
+        info.innerHTML = "Student name is " + pars.get("inputName") + " and the amount is " + pars.get("inputAmount");
+    </script>
+
+</body>
+</html>

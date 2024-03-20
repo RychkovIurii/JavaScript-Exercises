@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="student.html" method="get" onsubmit="return addData()">
+        <div>
+            <label>Student name</label>
+            <input type="text" id="infoName" name="inputName" placeholder="Enter your name" />
+            <br>
+            <br>
+            <br>
+        </div>
+        <div>
+            <label>Student password</label>
+            <input type="password" id="infoPass" name="inputPass" placeholder="Enter your password" />
+            <br></br>
+            <span id="spn"></span>
+            <br>
+        </div>
+        <div>
+            <label>Student payment</label>
+            <input type="number" id="infoAmount" name="inputAmount" placeholder="Enter your amount" />
+            <br>
+        </div>
+        <button type="submit">Submit</button>
+        
+
+    </form>
+
+    <script>
+
+        function addData(){
+            const userName = document.getElementById("infoName").value;
+            const userPass = document.getElementById("infoPass").value;
+            const spn = document.getElementById("spn");
+            if (userName === ""){
+                alert("Enter your name");
+                return false;
+            }
+            else if (userPass === ""){
+                spn.innerHTML = "Password is wrong!";
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>
