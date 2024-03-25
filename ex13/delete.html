@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete data</title>
+</head>
+<body>
+    <h1>Local storage 2</h1>
+    <input type="text" id="input" />
+    <button onclick="showData()">Show data</button>
+    <button onclick="appendData()">Append data</button>
+    <button onclick="delFirstElem()">Delete data (First child)</button>
+    <button onclick="delLastElem()">Delete data (Last child)</button>
+    <button onclick="delAnyElem()">Delete data (Selected)</button>
+    <div id="output"></div>
+    <ul id="myList">
+        <li>John</li>
+        <li>Jussi</li>
+    </ul>
+
+    <script>
+        
+        function showData(){
+            var getInput = document.getElementById("input").value;
+            document.getElementById("output").innerHTML = getInput;
+                // Set Item
+            localStorage.setItem("lastname", getInput);
+                // Retrieve
+            document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+        }
+        
+        function appendData() {
+            // Create an "li":
+            const node = document.createElement("li");
+            // Create a text:
+            const textnode = document.createTextNode("Juri");
+            // Append the text node to the "li" node:
+            node.appendChild(textnode);
+            // Append the "li" to the list:
+            document.getElementById("myList").appendChild(node);
+
+            // Assign the function to delete any element to the newly created node:
+            node.addEventListener("click", delAnyElem);
+
+                    // // Assign the function to delete any element to the newly created node:
+                    // node.addEventListener("click", function(){
+                    //         const list = document.getElementById("myList");
+                    //         list.removeChild(this);
+                    //     });
+        }
+
+        function delFirstElem() {
+            const list = document.getElementById("myList");
+            list.removeChild(list.firstElementChild);
+        }
+
+        function delLastElem() {
+            const list = document.getElementById("myList");
+            if (list.children.length > 0){
+                list.removeChild(list.lastElementChild);
+            }
+        }
+
+        function delAnyElem() {
+            // Remove the clicked element from the list:
+            this.parentNode.removeChild(this);
+        }
+
+
+
+    </script>
+</body>
+</html>
