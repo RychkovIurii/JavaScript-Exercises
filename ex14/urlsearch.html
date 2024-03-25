@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="info">
+
+    </div>
+
+    <script>
+        var ourUrlParams = new URLSearchParams(window.location.search);
+        var id = ourUrlParams.get("inputID");
+        var name = ourUrlParams.get("inputName");
+        var bill = ourUrlParams.get("inputAmount");
+
+        document.getElementById("info").innerHTML = "ID is " + id + ". Name is " + name + ". Bill is " + bill
+    </script>
+</body>
+</html>
