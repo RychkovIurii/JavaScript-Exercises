@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage</title>
+</head>
+<body>
+    <h1>Local storage</h1>
+    <input type="text" id="input" />
+    <button onclick="showData()">Show data</button>
+    <div id="output"></div>
+
+    <p>Saved name is:</p>
+    <p id="demo"></p>   
+
+    <p>Second demo is:</p>
+    <p id="demo2"></p>
+
+    <h2>The appendChild() Method</h2>
+    <ul id="myList">
+        <li>John</li>
+        <li>Jussi</li>
+    </ul>
+
+    <p>Click "Append" to append an item to the end of the list:</p>
+
+    <button onclick="myAppendFuct()">Append</button>
+
+    <script>
+        
+        function showData(){
+            var getInput = document.getElementById("input").value;
+            document.getElementById("output").innerHTML = getInput;
+                // Set Item
+            localStorage.setItem("lastname", getInput);
+                // Retrieve
+            document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+        }
+
+        
+
+        localStorage.clear();
+
+        // Save Data to Local Storage
+                // localStorage.setItem(key, value);
+        // Read Data from Local Storage
+                // let lastname = localStorage.getItem(key);
+        // Remove Data from Local Storage
+                // localStorage.removeItem(key);
+        // Remove All (Clear Local Storage)
+                // localStorage.clear();
+
+
+
+        let students = ["student_1", "student_2", "student_3", "student_4"];
+        console.log(students);
+        // ['student_1', 'student_2', 'student_3', 'student_4']
+
+        localStorage.setItem("ourStudents", JSON.stringify(students));
+        let student = JSON.parse(localStorage.getItem("ourStudents"));
+        console.log(student);
+        // ['student_1', 'student_2', 'student_3', 'student_4']
+
+        console.log(localStorage);  
+        // Storage {ourStudents: '["student_1","student_2","student_3","student_4"]', length: 1}
+
+
+        // Storing data:
+        const myObj = {name: "John", age: 31, city: "New York"};
+        const myJSON = JSON.stringify(myObj);
+        localStorage.setItem("testJSON", myJSON);
+
+        // Retrieving data:
+        let text = localStorage.getItem("testJSON");
+        let obj = JSON.parse(text);
+        document.getElementById("demo2").innerHTML = obj.name;
+
+
+        
+        function myAppendFuct() {
+
+        // Create an "li":
+        const node = document.createElement("li");
+
+        // Create a text:
+        const textnode = document.createTextNode("Juri");
+
+        // Append the text node to the "li" node:
+        node.appendChild(textnode);
+
+        // Append the "li" to the list:
+        document.getElementById("myList").appendChild(node);
+        }
+
+    </script>
+</body>
+</html>
