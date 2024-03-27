@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Bill Management</h1>
+
+    <input type="text" id="studentId" placeholder="Student ID">
+    <input type="text" id="studentName"placeholder="Student Name">
+    <input type="number" id="studentBill"placeholder="Bill Amount">
+
+    <button onclick="createStudent()">Add Student</button>
+    <button onclick="updateStudent()">Update Bill</button>
+    <button onclick="deleteStudent()">Delete Student</button>
+    <button onclick="checkBill()">Check Bill</button>
+    <button onclick="totalBill()">Total Bill</button>
+    <div id="output"></div>
+
+    <script>
+        let students = [
+            {id: "1", name: "Juri", bill: 3000},
+            {id: "2", name: "Mark", bill: 4000},
+            {id: "3", name: "Leo", bill: 5000}
+        ];
+        displayData();
+
+        function displayData(){
+            const output = document.getElementById("output");
+            output.innerHTML = "";
+            for (let i=0; i<students.length; i++)
+            {
+                output.innerHTML += `Name is ${students[i].name}. ID is ${students[i].id}. Bill is ${students[i].bill}<br>`;
+            }
+        }
+
+        function getData(){
+            const name = document.getElementById("studentName").value;
+            const id = document.getElementById("studentId").value;
+            const bill = document.getElementById("studentBill").value;
+            return{name, id, bill};
+        }
+
+        function isValidData(){
+            const {name, id, bill} = getData();
+            if (name === ""){
+                alert("Enter your name");
+                return false;
+            }
+            else if (id === ""){
+                alert("Please enter a valid ID");
+                return false;
+            }
+            else if (bill === "") {
+                alert("Enter your bill amount");
+                return false;
+            }
+            return true;
+        }
+
+        function createStudent(){
+            //isValidData();
+            const {name, id, bill} = getData();
+            const existingIndex = students.findIndex(s => s.id === id);
+            if (isValidData() && (existingIndex == -1)){
+                students.push({id, name, bill: parseInt(bill)})
+                alert("SUCCESS");
+                displayData();
+                return true;
+            }
+            alert("Wrong ID, already exist");
+            return false;
+        }
+
+        function updateStudent(){
+            const {name, id, bill} = getData();
+            const existingIndex = students.findIndex(s => s.id === id);
+            if (isValidData() && (existingIndex > -1)){
+                students[existingIndex] = {name, id, bill: parseInt(bill)};
+                alert("SUCCESS");
+                displayData();
+            }
+            else {
+                alert("Please enter a valid ID");
+            }
+        }
+
+        function deleteStudent(){
+            const {name, id, bill} = getData();
+            const existingIndex = students.findIndex(s => s.id === id);
+            if ((existingIndex > -1) && (existingIndex < students.length)){
+                students = students.filter(student => student.id !== id);
+                alert("SUCCESS");
+                displayData();
+            }
+            else {
+                alert("Please enter a valid ID");
+            }
+        }
+
+        function checkBill(){
+            const {name, id, bill} = getData();
+            const existingIndex = students.findIndex(s => s.id === id);
+            if (existingIndex > -1){
+                alert(`Bill is ${students[existingIndex].bill}`);
+            }
+            else {
+                alert("Please enter a valid ID");
+            }
+        }
+
+        function totalBill(){
+            let total = 0;
+            for (let i=0; i < students.length; i++){
+                total = total + students[i].bill;
+            }
+            alert(`TotalBill is ${total}`);
+        }
+    </script>
+</body>
+</html>
