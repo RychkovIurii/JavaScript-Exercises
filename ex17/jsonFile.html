@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h3>Fetch JSON</h3>
+	<div id="example"></div>
+
+	<script>
+	fetch("jsonData.json").then((Promise)=>{
+		return Promise.json()
+	}).then((data)=>{
+
+		console.log(data);	// array
+
+
+		data.forEach(element => {
+			console.log(element.city); // value of city
+		});
+
+
+		const data2 = data.map((randomname)=>{
+			return randomname.city
+		})
+		console.log(data2); // new array with just cities
+
+		data.forEach(element => {
+			document.getElementById("example").innerHTML +=
+			"Name is " + element.name + ". Age is " + element.age +
+			 ". City is " + element.city + "<br>"		//display on the page
+		});
+	})
+	</script>
+</body>
+</html>
