@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h2>Using fetch-method to read image by using blob</h2>
+	<img src="" id="image">
+
+	<script>
+		fetch("calcio.jpeg").then((Promise)=>{
+			return Promise.blob();
+		}).then((myPicture)=>{
+			document.getElementById("image").src = URL.createObjectURL(myPicture);	
+		})
+
+	</script>
+</body>
+</html>
