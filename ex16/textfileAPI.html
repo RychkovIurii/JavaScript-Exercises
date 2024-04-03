@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h4>Using fetch-method to read data from .txt file</h4>
+	<div id="example"></div>
+	<p>Some gap between our examples</p>
+	<div id="example2"></div>
+
+	<script>
+		//fetch method
+
+		fetch("textfileAPI.txt").then((anyName)=>{
+			return anyName.text();
+		}).then((data)=>{
+			console.log(data);
+			document.getElementById("example").innerHTML = data;
+		})
+
+		getText("textfileAPI.txt");
+
+		async function getText(file) {
+			let myObject = await fetch(file);
+			let myText = await myObject.text();
+			document.getElementById("example2").innerHTML = myText;
+		}
+
+
+	</script>
+</body>
+</html>
