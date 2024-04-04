@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<h2>Filtering with SELECT</h2>
+	<select id="cars">
+		<option value="Choose">Vehicle type</option>
+		<option value="Volvo">Volvo</option>
+		<option value="Toyota">Toyota</option>
+		<option value="BMW">BMW</option>
+	</select>
+
+	<select id="models" style="display: none;">
+
+	</select>
+
+	<script>
+		document.getElementById("cars").addEventListener("change", () => {
+			//console.log("EventLis works");
+			const car = document.getElementById("cars").value;
+			//console.log(car);
+			if (car === "Toyota"){
+				const models = document.getElementById("models");
+				const toyotaModels = ["Carina", "Camry", "RAV4", "Land Cruiser", "Avensis", "Corolla"];
+				toyotaModels.forEach(s => {
+					const sElement = document.createElement("option");
+					const text = document.createTextNode(s);
+					sElement.appendChild(text);
+					models.appendChild(sElement);
+				})
+				models.style.display = "block";
+			}
+		})
+	</script>
+</body>
+</html>
