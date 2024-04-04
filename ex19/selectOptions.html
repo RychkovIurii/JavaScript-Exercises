@@ -23,10 +23,11 @@
 		document.getElementById("cars").addEventListener("change", () => {
 			//console.log("EventLis works");
 			const car = document.getElementById("cars").value;
+			const models = document.getElementById("models");
+			models.style.display = "none";
 			//console.log(car);
 			if (car === "Toyota"){
-				const models = document.getElementById("models");
-				const toyotaModels = ["Carina", "Camry", "RAV4", "Land Cruiser", "Avensis", "Corolla"];
+				const toyotaModels = ["Model", "Carina", "Camry", "RAV4", "Land Cruiser", "Avensis", "Corolla"];
 				toyotaModels.forEach(s => {
 					const sElement = document.createElement("option");
 					const text = document.createTextNode(s);
