@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		const list = [0, 1, 2, 3, 4, 5, 6, 7];
+		//slice, splice, filter, findIndex, find, forEach, map
+
+		console.log(list.slice(2, 5));			// [2, 3, 4]
+		console.log(list);						// [0, 1, 2, 3, 4, 5, 6, 7]
+		
+		const spliceList = list.splice(2, 5);
+		console.log(spliceList);				// [2, 3, 4, 5, 6]
+		console.log(list);						// [0, 1, 7]
+
+		const list2 = [0, 1, 2, 3, 4, 5, 6, 7];
+		const evenNum = list2.filter((e) => {
+			return e % 2 == 0;
+		});
+		console.log(evenIndex);					// [0, 2, 4, 6]
+
+
+
+		/* Promise - это объект, представляющий успешное или неудачное завершение асинхронной операции и её результат. */
+		let promise = new Promise((resolve, reject) => {
+			let success = true;
+			if (success) {
+				resolve("Operation was successful!");
+			} else {
+				reject("Operation failed!");
+			}
+		});
+
+		promise.then(result => {
+			console.log(result); // "Operation was successful!"
+		}).catch(error => {
+			console.error(error); // "Operation failed!"
+		});
+
+
+		/* Import
+		В ES6 и новее модули можно импортировать с помощью ключевого слова import. */
+		// file: math.js
+		export function add(a, b) {
+			return a + b;
+		}
+
+		// file: main.js
+		import { add } from './math.js';
+		console.log(add(2, 3)); // 5
+
+
+		/* When call element (query)
+		Для получения элементов DOM можно использовать методы querySelector и querySelectorAll. */
+		let element = document.querySelector('#myElement');
+		let elements = document.querySelectorAll('.myElements');
+
+		element.style.color = 'blue';
+		elements.forEach(el => el.style.color = 'red');
+
+
+
+		/* TREE (разные функции для работы с деревьями)
+		В JavaScript деревья можно обрабатывать разными способами, например, используя рекурсию для обхода узлов. */
+		let tree = {
+			value: 1,
+			children: [
+				{
+					value: 2,
+					children: []
+				},
+				{
+					value: 3,
+					children: [
+						{
+							value: 4,
+							children: []
+						}
+					]
+				}
+			]
+		};
+
+		function traverse(node) {
+			console.log(node.value);
+			node.children.forEach(child => traverse(child));
+		}
+
+		traverse(tree);
+
+
+
+		/* Declare variable (объявление переменных)
+		В JavaScript можно объявлять переменные с помощью var, let и const. */
+		var x = 10;
+		let y = 20;
+		const z = 30;
+
+		x = 40; // Ok
+		y = 50; // Ok
+		z = 60; // Error: Assignment to constant variable.
+
+
+
+		/* JSON
+		JSON (JavaScript Object Notation) - это формат обмена данными, который легко читается и пишется людьми. */
+		let jsonObject = {
+			"name": "John",
+			"age": 30,
+			"isStudent": false
+		};
+
+		let jsonString = JSON.stringify(jsonObject);
+		console.log(jsonString); // '{"name":"John","age":30,"isStudent":false}'
+
+		let parsedObject = JSON.parse(jsonString);
+		console.log(parsedObject.name); // John
+
+
+
+
+		/* Ternary operator (тернарный оператор)
+		Тернарный оператор используется для краткой записи условного выражения. */
+		let age = 18;
+		let isAdult = age >= 18 ? "Yes" : "No";
+		console.log(isAdult); // Yes
+
+
+
+		/* Handle promise functions
+		Работа с функциями, возвращающими промисы, включает использование then, catch и finally. */
+		function fetchData() {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve("Data fetched!");
+				}, 1000);
+			});
+		}
+
+		fetchData().then(result => {
+			console.log(result); // "Data fetched!"
+		}).catch(error => {
+			console.error(error);
+		}).finally(() => {
+			console.log("Fetch operation completed.");
+		});
+
+
+
+		/* Catch
+		Метод catch используется для обработки ошибок в промисах. */
+		let promise = new Promise((resolve, reject) => {
+			reject("An error occurred!");
+		});
+
+		promise.then(result => {
+			console.log(result);
+		}).catch(error => {
+			console.error(error); // "An error occurred!"
+		});
+
+
+
+		/* Loop, why loop, .. what different?
+		Циклы используются для многократного выполнения одного и того же кода. Основные типы циклов: for, while, do...while. */
+		// for loop
+		for (let i = 0; i < 5; i++) {
+			console.log(i); // 0, 1, 2, 3, 4
+		}
+
+		// while loop
+		let j = 0;
+		while (j < 5) {
+			console.log(j); // 0, 1, 2, 3, 4
+			j++;
+		}
+
+		// do...while loop
+		let k = 0;
+		do {
+			console.log(k); // 0, 1, 2, 3, 4
+			k++;
+		} while (k < 5);
+
+
+
+		/* This (calling objects)
+		Ключевое слово this используется для ссылки на текущий контекст выполнения. */
+		let person = {
+			name: "Alice",
+			greet: function() {
+				console.log(`Hello, my name is ${this.name}`);
+			}
+		};
+
+		person.greet(); // "Hello, my name is Alice"
+
+
+
+		/* Рассмотрим пример, как можно использовать промисы для получения данных о погоде с помощью fetch API. Мы будем использовать сторонний сервис, такой как OpenWeatherMap, для получения данных о погоде.
+
+		### Шаги:
+
+		1. **Регистрация и получение API ключа:** Для начала, зарегистрируйся на [OpenWeatherMap](https://openweathermap.org/) и получи API ключ.
+		2. **Создание функции для получения данных о погоде:** Используем fetch API и промисы для запроса данных.
+		3. **Обработка ответа с помощью методов `then`, `catch` и `finally`.**
+
+		### Пример кода: */
+
+		// Ваш API ключ
+		const API_KEY = 'your_api_key';
+
+		// Функция для получения данных о погоде по названию города
+		function getWeather(city) {
+			const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+
+			return fetch(url)
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					return response.json();
+				})
+				.then(data => {
+					// Обработка данных о погоде
+					return {
+						temperature: data.main.temp,
+						description: data.weather[0].description,
+						city: data.name,
+						country: data.sys.country
+					};
+				})
+				.catch(error => {
+					console.error('There was a problem with the fetch operation:', error);
+					throw error;
+				});
+		}
+
+		// Использование функции для получения данных о погоде
+		getWeather('Moscow').then(weather => {
+			console.log(`Temperature in ${weather.city}, ${weather.country} is ${weather.temperature}°C with ${weather.description}.`);
+		}).catch(error => {
+			console.error('Failed to fetch weather data:', error);
+		}).finally(() => {
+			console.log('Weather fetch operation completed.');
+		});
+		
+
+		/*Ваш API ключ
+		const API_KEY = "your_api_key";
+
+		Функция для получения данных о погоде по названию города */
+		function getWeather(city) {
+			const url = "https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric";
+
+			return fetch(url)
+				.then(response => {
+					if (!response.ok) {
+						throw new Error('Network response was not ok ' + response.statusText);
+					}
+					return response.json();
+				})
+				.then(data => {
+					// Обработка данных о погоде
+					return {
+						temperature: data.main.temp,
+						description: data.weather[0].description,
+						city: data.name,
+						country: data.sys.country
+					};
+				})
+				.catch(error => {
+					console.error('There was a problem with the fetch operation:', error);
+					throw error;
+				});
+		}
+
+		// Использование функции для получения данных о погоде
+		getWeather('Moscow').then(weather => {
+			console.log(`Temperature in ${weather.city}, ${weather.country} is ${weather.temperature}°C with ${weather.description}.`);
+		}).catch(error => {
+			console.error('Failed to fetch weather data:', error);
+		}).finally(() => {
+			console.log('Weather fetch operation completed.');
+		});
+
+		/* ### Объяснение кода:
+
+		1. **API URL:** Создаем URL запроса, вставляя название города и API ключ.
+		2. **Fetch API:** Отправляем запрос к API с помощью `fetch`.
+		3. **Обработка ответа:**
+			- Проверяем, успешен ли ответ (`response.ok`), если нет, бросаем ошибку.
+			- Парсим ответ в формат JSON.
+			- Извлекаем необходимые данные из ответа (температура, описание погоды, город, страна).
+		4. **Обработка ошибок:** В блоке `catch` обрабатываем возможные ошибки.
+		5. **Вывод данных о погоде:** В блоке `then` выводим данные о погоде в консоль.
+		6. **Finally:** Блок `finally` выполняется всегда, независимо от успешности или ошибки запроса.
+
+		### Заметки:
+
+		- **API ключ:** Обязательно замените `'your_api_key'` на ваш реальный API ключ.
+		- **Обработка ошибок:** Важно обрабатывать ошибки, чтобы ваш код был устойчив к возможным проблемам с сетью или сервером.
+		- **Единицы измерения:** В примере используется параметр `units=metric` для получения температуры в градусах Цельсия. Можно использовать `imperial` для градусов Фаренгейта. */
+
+
+
+
+		
+
+		/* Отличие между методами `map` и `forEach` в JavaScript заключается в их предназначении и поведении. Оба метода используются для обхода массива и выполнения функции для каждого элемента массива, но они служат разным целям и ведут себя по-разному.
+
+		### `forEach`
+
+		`forEach` выполняет указанную функцию один раз для каждого элемента массива. Он обычно используется для выполнения побочных эффектов, таких как изменение данных или выполнение каких-либо действий. `forEach` не возвращает новый массив и не может быть цепочкой.
+
+		**Пример использования `forEach`:** */
+
+		
+		let numbers = [1, 2, 3, 4, 5];
+
+		// Умножим каждый элемент массива на 2 и выведем в консоль
+		numbers.forEach((number) => {
+			console.log(number * 2);
+		});
+
+		// Вывод в консоль:
+		// 2
+		// 4
+		// 6
+		// 8
+		// 10
+		
+
+		/* ### `map`
+
+		`map` создает новый массив с результатами вызова указанной функции для каждого элемента массива. Он используется, когда необходимо преобразовать каждый элемент массива в другой элемент. `map` всегда возвращает новый массив такой же длины, что и исходный массив.
+
+		**Пример использования `map`:** */
+
+		
+		let numbers = [1, 2, 3, 4, 5];
+
+		// Создадим новый массив, где каждый элемент умножен на 2
+		let doubledNumbers = numbers.map((number) => {
+			return number * 2;
+		});
+
+		console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+		
+
+		/* ### Основные отличия
+
+		1. **Возвращаемое значение:**
+		- `forEach` не возвращает новый массив. Он всегда возвращает `undefined`.
+		- `map` возвращает новый массив с результатами выполнения функции для каждого элемента исходного массива.
+
+		2. **Использование:**
+		- `forEach` используется, когда вам нужно выполнить побочные действия для каждого элемента массива, такие как изменение содержимого или вывод в консоль.
+		- `map` используется, когда вам нужно создать новый массив, преобразовав каждый элемент исходного массива.
+
+		3. **Цепочечность:**
+		- `forEach` не поддерживает цепочку вызовов, так как он возвращает `undefined`.
+		- `map` поддерживает цепочку вызовов, так как возвращает новый массив, с которым можно продолжать работать.
+
+		**Пример сравнения:** */
+
+		
+		let numbers = [1, 2, 3, 4, 5];
+
+		// Пример использования forEach
+		numbers.forEach((number) => {
+			console.log(number * 2); // Выполняем действие для каждого элемента
+		});
+
+		// Пример использования map
+		let doubledNumbers = numbers.map((number) => {
+			return number * 2; // Преобразуем каждый элемент и создаем новый массив
+		});
+
+		console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+		
+
+		/* ### Заключение
+
+		Используйте `forEach`, когда вам нужно просто выполнить какое-то действие для каждого элемента массива, не создавая новый массив. Используйте `map`, когда вам нужно создать новый массив, преобразовав каждый элемент исходного массива. */
+
+
+	</script>
+
+</body>
+</html>
